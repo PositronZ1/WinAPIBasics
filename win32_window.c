@@ -8,16 +8,21 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
     switch(msg)
     {
         case WM_LBUTTONDOWN:
-            MessageBoxA(hwnd, "Left button pressed.", "Note", MB_OK);
+            MessageBox(hwnd, "Left button pressed.", "Note", MB_OK);
+            char szFileName[MAX_PATH];
+            HINSTANCE hInstance = GetModuleHandle(NULL);
+            
+            GetModuleFileName(hInstance, szFileName, MAX_PATH);
+            MessageBox(hwnd, szFileName, "PROGRAM NAME", MB_OK | MB_ICONEXCLAMATION);
             break;
         case WM_RBUTTONDOWN:
-            MessageBoxA(hwnd, "Right button pressed.", "Note", MB_OK);
+            MessageBox(hwnd, "Right button pressed.", "Note", MB_OK);
             break;
         case WM_MBUTTONDOWN:
-            MessageBoxA(hwnd, "Middle button pressed.", "Note", MB_OK);
+            MessageBox(hwnd, "Middle button pressed.", "Note", MB_OK);
             break;
         case WM_CLOSE:
-            MessageBoxA(hwnd, "YOU ARE DESTROYING ME!!!", "NOOOOOO!", MB_OK);
+            MessageBox(hwnd, "YOU ARE DESTROYING ME!!!", "NOOOOOO!", MB_OK);
             DestroyWindow(hwnd);
             break;
         case WM_DESTROY:
@@ -51,7 +56,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     
     if(!RegisterClassEx(&wc))
     {
-        MessageBoxA(NULL, "failed to register window class", "Fatal error", MB_OK);
+        MessageBox(NULL, "failed to register window class", "Fatal error", MB_OK);
         return -1;
     }
     
@@ -59,7 +64,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     
     if (!hwnd)
     {
-        MessageBoxA(NULL, "Window creation failed!", "Error!", MB_ICONEXCLAMATION | MB_OK);
+        MessageBox(NULL, "Window creation failed!", "Error!", MB_ICONEXCLAMATION | MB_OK);
         return -1;
     }
     
