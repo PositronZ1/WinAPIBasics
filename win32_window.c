@@ -8,16 +8,16 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
     switch(msg)
     {
         case WM_LBUTTONDOWN:
-            MessageBoxA(NULL, "Left button pressed.", "Note", MB_OK);
+            MessageBoxA(hwnd, "Left button pressed.", "Note", MB_OK);
             break;
         case WM_RBUTTONDOWN:
-            MessageBoxA(NULL, "Right button pressed.", "Note", MB_OK);
+            MessageBoxA(hwnd, "Right button pressed.", "Note", MB_OK);
             break;
         case WM_MBUTTONDOWN:
-            MessageBoxA(NULL, "Middle button pressed.", "Note", MB_OK);
+            MessageBoxA(hwnd, "Middle button pressed.", "Note", MB_OK);
             break;
         case WM_CLOSE:
-            MessageBoxA(NULL, "YOU ARE DESTROYING ME!!!", "NOOOOOO!", MB_OK);
+            MessageBoxA(hwnd, "YOU ARE DESTROYING ME!!!", "NOOOOOO!", MB_OK);
             DestroyWindow(hwnd);
             break;
         case WM_DESTROY:
