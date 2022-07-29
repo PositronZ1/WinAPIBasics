@@ -8,6 +8,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
     switch(msg)
     {
         case WM_LBUTTONDOWN:
+        {
             MessageBox(hwnd, "Left button pressed.", "Note", MB_OK);
             char szFileName[MAX_PATH];
             HINSTANCE hInstance = GetModuleHandle(NULL);
@@ -15,9 +16,17 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
             GetModuleFileName(hInstance, szFileName, MAX_PATH);
             MessageBox(hwnd, szFileName, "PROGRAM NAME", MB_OK | MB_ICONEXCLAMATION);
             break;
+        }
         case WM_RBUTTONDOWN:
+        {
             MessageBox(hwnd, "Right button pressed.", "Note", MB_OK);
+            HINSTANCE hInstance = GetModuleHandle(NULL);
+            HWND hwnd = GetActiveWindow();
+            
+            SetWindowText(hwnd, "Test Window 2");
+            
             break;
+        }
         case WM_MBUTTONDOWN:
             MessageBox(hwnd, "Middle button pressed.", "Note", MB_OK);
             break;
