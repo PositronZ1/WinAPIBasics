@@ -9,7 +9,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
     {
         case WM_LBUTTONDOWN:
         {
-            MessageBox(hwnd, "Left button pressed.", "Note", MB_OK);
             char szFileName[MAX_PATH];
             HINSTANCE hInstance = GetModuleHandle(NULL);
             
@@ -19,17 +18,16 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         }
         case WM_RBUTTONDOWN:
         {
-            MessageBox(hwnd, "Right button pressed.", "Note", MB_OK);
-            HINSTANCE hInstance = GetModuleHandle(NULL);
             HWND hwnd = GetActiveWindow();
-            
             SetWindowText(hwnd, "Test Window 2");
-            
             break;
         }
         case WM_MBUTTONDOWN:
-            MessageBox(hwnd, "Middle button pressed.", "Note", MB_OK);
+        {
+            HWND hwnd = GetActiveWindow();
+            SetWindowPos(hwnd, NULL, 600, 400, 0, 0, SWP_NOSIZE | SWP_SHOWWINDOW);
             break;
+        }
         case WM_CLOSE:
             MessageBox(hwnd, "YOU ARE DESTROYING ME!!!", "NOOOOOO!", MB_OK);
             DestroyWindow(hwnd);
