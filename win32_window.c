@@ -18,13 +18,11 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         }
         case WM_RBUTTONDOWN:
         {
-            HWND hwnd = GetActiveWindow();
             SetWindowText(hwnd, "Test Window 2");
             break;
         }
         case WM_MBUTTONDOWN:
         {
-            HWND hwnd = GetActiveWindow();
             SetWindowPos(hwnd, NULL, 600, 400, 0, 0, SWP_NOSIZE | SWP_SHOWWINDOW);
             break;
         }
